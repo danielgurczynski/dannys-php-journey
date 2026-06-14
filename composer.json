@@ -1,0 +1,13 @@
+{
+    "name": "danny/php-journey",
+    "description": "Interactive PHP Platform Engineering Portfolio",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Danny\\Journey\\": "src/"
+        }
+    },
+    "require": {
+        "php": ">=8.1"
+    }
+}

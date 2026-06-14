@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daniel Gurczynski — PHP Platform Engineer</title>
+    <meta name="description" content="An interactive journey through PHP, OOP, REST APIs, webhooks, OAuth, MySQL performance, and scalable community platform engineering by Daniel Gurczynski.">
+    <link rel="stylesheet" href="/assets/css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800;900&family=Instrument+Serif&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+</head>
+<body>
+    <nav class="top-nav">
+        <div class="nav-brand">
+            <span class="nav-logo">DG</span>
+            <span class="nav-title">Daniel Gurczynski</span>
+        </div>
+        <div class="nav-progress">
+            <div class="nav-progress-bar" id="globalProgress"></div>
+        </div>
+        <div class="nav-right">
+            <div class="nav-skills" id="navSkills"></div>
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle light/dark mode">
+                <svg class="theme-icon theme-icon--sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="5"></circle>
+                    <line x1="12" y1="1" x2="12" y2="3"></line>
+                    <line x1="12" y1="21" x2="12" y2="23"></line>
+                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                    <line x1="1" y1="12" x2="3" y2="12"></line>
+                    <line x1="21" y1="12" x2="23" y2="12"></line>
+                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                </svg>
+                <svg class="theme-icon theme-icon--moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <header class="hero" id="hero">
+        <div class="hero-grid"></div>
+        <div class="hero-grain"></div>
+        <div class="hero-content">
+            <div class="hero-badge">Handcrafted Portfolio</div>
+            <p class="hero-byline">by <strong>Daniel Gurczynski</strong></p>
+            <h1 class="hero-title">
+                <span class="hero-line">PHP Platform</span>
+                <span class="hero-line hero-line--serif">Engineering Journey</span>
+            </h1>
+            <p class="hero-subtitle">
+                An interactive walkthrough of scalable community platform engineering —
+                from legacy PHP to modern OOP, REST APIs, webhooks, OAuth, database performance,
+                and production-ready architecture. Every line of code written by hand.
+            </p>
+            <div class="hero-stats">
+                <div class="stat">
+                    <span class="stat-num">8</span>
+                    <span class="stat-label">Chapters</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-num">7</span>
+                    <span class="stat-label">Demos</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-num">6</span>
+                    <span class="stat-label">API Endpoints</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-num">6</span>
+                    <span class="stat-label">PHP Classes</span>
+                </div>
+            </div>
+            <div class="hero-cta">
+                <button class="btn btn-primary btn-glow" onclick="document.getElementById('chapter1').scrollIntoView({behavior:'smooth'})">
+                    Begin the Journey ↓
+                </button>
+            </div>
+        </div>
+        <div class="hero-scroll-indicator">
+            <span>Scroll to explore</span>
+            <div class="scroll-arrow"></div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Chapter 1: Legacy PHP Cave -->
+        <section class="chapter" id="chapter1" data-chapter="1">
+            <div class="chapter-header">
+                <div class="chapter-number">01</div>
+                <h2 class="chapter-title">The Legacy PHP Cave</h2>
+                <p class="chapter-subtitle">Where every developer begins — tangled spaghetti code with no structure</p>
+            </div>
+            <div class="chapter-body">
+                <div class="chapter-content">
+                    <div class="story-card">
+                        <h3>The Problem</h3>
+                        <p>Every mature platform starts somewhere. Legacy PHP codebases mix HTML, SQL, and logic in single files. No separation of concerns. No type safety. No testability. It works — until it doesn't.</p>
+                        <p>Community platforms like Invision Community have evolved over 20+ years. Understanding legacy patterns is critical for migration, maintenance, and incremental modernization.</p>
+                    </div>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-dot red"></span>
+                            <span class="code-dot yellow"></span>
+                            <span class="code-dot green"></span>
+                            <span class="code-filename">legacy/member_view.php (circa 2008)</span>
+                        </div>
+                        <pre><code><span class="php-tag">&lt;?php</span>
+<span class="comment">// No autoloading, no classes, no types</span>
+<span class="php-tag">include</span>(<span class="string">'config.php'</span>);
+<span class="php-tag">include</span>(<span class="string">'header.php'</span>);
+
+<span class="var">$id</span> = <span class="func">intval</span>(<span class="var">$_GET</span>[<span class="string">'id'</span>]);
+<span class="var">$result</span> = <span class="func">mysql_query</span>(
+    <span class="string">"SELECT * FROM members WHERE id = $id"</span>
+);
+<span class="var">$row</span> = <span class="func">mysql_fetch_assoc</span>(<span class="var">$result</span>);
+
+<span class="php-tag">if</span> (<span class="var">$row</span>[<span class="string">'banned'</span>]) {
+    <span class="php-tag">echo</span> <span class="string">"&lt;h1&gt;BANNED&lt;/h1&gt;"</span>;
+    <span class="php-tag">die</span>();
+}
+<span class="comment">// ... 400 more lines mixed with HTML</span></code></pre>
+                    </div>
+                </div>
+                <div class="chapter-side">
+                    <div class="skill-badge locked" id="badge-legacy">
+                        <div class="badge-icon">🔒</div>
+                        <div class="badge-info">
+                            <span class="badge-name">Legacy Navigator</span>
+                            <span class="badge-desc">Understanding legacy patterns</span>
+                        </div>
+                    </div>
+                    <div class="why-card">
+                        <h4>Why This Matters</h4>
+                        <p>Community platforms carry years of technical debt. Knowing legacy PHP — and how to incrementally modernize it — is essential for any engineer joining a mature platform team.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Chapter 2: OOP Forge -->
+        <section class="chapter" id="chapter2" data-chapter="2">
+            <div class="chapter-header">
+                <div class="chapter-number">02</div>
+                <h2 class="chapter-title">The OOP Forge</h2>
+                <p class="chapter-subtitle">Where raw PHP is hammered into typed, structured, testable classes</p>
+            </div>
+            <div class="chapter-body">
+                <div class="chapter-content">
+                    <div class="story-card">
+                        <h3>The Problem</h3>
+                        <p>Untyped arrays and procedural code can't scale. As a community platform grows to millions of members, you need domain objects that encapsulate behavior, enforce invariants, and are easy to test.</p>
+                    </div>
+                    <div class="demo-box">
+                        <h4>Interactive Demo — Create a Member Object</h4>
+                        <p>Click to instantiate a typed PHP <code>Member</code> class and see it rendered as JSON.</p>
+                        <div class="demo-controls">
+                            <button class="btn btn-primary" id="btnCreateMember">Create Member</button>
+                        </div>
+                        <div class="demo-output" id="memberOutput" style="display:none;">
+                            <div class="output-label">Member Object → JSON</div>
+                            <pre id="memberJson"></pre>
+                        </div>
+                    </div>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-dot red"></span>
+                            <span class="code-dot yellow"></span>
+                            <span class="code-dot green"></span>
+                            <span class="code-filename">src/Domain/Member.php</span>
+                        </div>
+                        <pre><code><span class="keyword">class</span> <span class="class-name">Member</span>
+{
+    <span class="keyword">public function</span> <span class="func">__construct</span>(
+        <span class="keyword">private readonly</span> <span class="type">int</span>    <span class="var">$id</span>,
+        <span class="keyword">private</span> <span class="type">string</span> <span class="var">$name</span>,
+        <span class="keyword">private</span> <span class="type">string</span> <span class="var">$email</span>,
+        <span class="keyword">private</span> <span class="type">string</span> <span class="var">$status</span> = <span class="string">'active'</span>,
+        <span class="keyword">private</span> <span class="type">string</span> <span class="var">$role</span>    = <span class="string">'member'</span>,
+        <span class="keyword">private</span> <span class="type">int</span>    <span class="var">$posts</span>  = <span class="num">0</span>,
+    ) {}
+
+    <span class="keyword">public function</span> <span class="func">toArray</span>(): <span class="type">array</span> { ... }
+    <span class="keyword">public function</span> <span class="func">toJson</span>(): <span class="type">string</span> { ... }
+}</code></pre>
+                    </div>
+                </div>
+                <div class="chapter-side">
+                    <div class="skill-badge locked" id="badge-oop">
+                        <div class="badge-icon">🔒</div>
+                        <div class="badge-info">
+                            <span class="badge-name">OOP Architect</span>
+                            <span class="badge-desc">Typed PHP domain modeling</span>
+                        </div>
+                    </div>
+                    <div class="why-card">
+                        <h4>Why This Matters</h4>
+                        <p>Invision Community's codebase uses domain objects for members, content, and permissions. Typed classes make the codebase navigable, refactorable, and safe at scale.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Chapter 3: API Bridge -->
+        <section class="chapter" id="chapter3" data-chapter="3">
+            <div class="chapter-header">
+                <div class="chapter-number">03</div>
+                <h2 class="chapter-title">The API Bridge</h2>
+                <p class="chapter-subtitle">Connecting systems through clean RESTful interfaces</p>
+            </div>
+            <div class="chapter-body">
+                <div class="chapter-content">
+                    <div class="story-card">
+                        <h3>The Problem</h3>
+                        <p>Modern community platforms are API-first. Mobile apps, third-party integrations, and internal microservices all communicate through REST APIs. A clean, well-structured API layer is the bridge between your platform and the world.</p>
+                    </div>
+                    <div class="demo-box">
+                        <h4>Interactive Demo — Send a REST Request</h4>
+                        <p>Click to simulate a GET request to <code>/api/members</code> and see the structured JSON response.</p>
+                        <div class="demo-controls">
+                            <button class="btn btn-primary" id="btnApiRequest">Send REST Request</button>
+                        </div>
+                        <div class="demo-output" id="apiOutput" style="display:none;">
+                            <div class="api-flow">
+                                <div class="api-step">
+                                    <div class="api-method">GET</div>
+                                    <div class="api-url">/api/members?q=alex</div>
+                                </div>
+                                <div class="api-arrow">→</div>
+                                <div class="api-step">
+                                    <div class="api-method success">200 OK</div>
+                                    <div class="api-url">JSON Response</div>
+                                </div>
+                            </div>
+                            <pre id="apiJson"></pre>
+                        </div>
+                    </div>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-dot red"></span>
+                            <span class="code-dot yellow"></span>
+                            <span class="code-dot green"></span>
+                            <span class="code-filename">src/Http/ApiResponse.php</span>
+                        </div>
+                        <pre><code><span class="keyword">class</span> <span class="class-name">ApiResponse</span>
+{
+    <span class="keyword">public static function</span> <span class="func">json</span>(
+        <span class="type">mixed</span> <span class="var">$data</span>,
+        <span class="type">int</span> <span class="var">$status</span> = <span class="num">200</span>
+    ): <span class="type">void</span> {
+        <span class="func">http_response_code</span>(<span class="var">$status</span>);
+        <span class="func">header</span>(<span class="string">'Content-Type: application/json'</span>);
+        <span class="keyword">echo</span> <span class="func">json_encode</span>(<span class="var">$data</span>);
+    }
+
+    <span class="keyword">public static function</span> <span class="func">success</span>(
+        <span class="type">mixed</span> <span class="var">$data</span>,
+        <span class="type">string</span> <span class="var">$msg</span> = <span class="string">'OK'</span>
+    ): <span class="type">void</span> {
+        <span class="keyword">self</span>::<span class="func">json</span>([
+            <span class="string">'success'</span> => <span class="keyword">true</span>,
+            <span class="string">'message'</span> => <span class="var">$msg</span>,
+            <span class="string">'data'</span>    => <span class="var">$data</span>,
+        ]);
+    }
+}</code></pre>
+                    </div>
+                </div>
+                <div class="chapter-side">
+                    <div class="skill-badge locked" id="badge-api">
+                        <div class="badge-icon">🔒</div>
+                        <div class="badge-info">
+                            <span class="badge-name">API Architect</span>
+                            <span class="badge-desc">RESTful API design</span>
+                        </div>
+                    </div>
+                    <div class="why-card">
+                        <h4>Why This Matters</h4>
+                        <p>Invision Community exposes REST APIs for mobile apps, themes, plugins, and third-party integrations. A clean API layer with proper response formatting is table stakes.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Chapter 4: Webhook Watchtower -->
+        <section class="chapter" id="chapter4" data-chapter="4">
+            <div class="chapter-header">
+                <div class="chapter-number">04</div>
+                <h2 class="chapter-title">The Webhook Watchtower</h2>
+                <p class="chapter-subtitle">Real-time event notifications that keep systems in sync</p>
+            </div>
+            <div class="chapter-body">
+                <div class="chapter-content">
+                    <div class="story-card">
+                        <h3>The Problem</h3>
+                        <p>Community platforms generate events constantly — new members, posts, reports, purchases. Webhooks let external systems react in real-time. An event store provides reliability and replay capability.</p>
+                    </div>
+                    <div class="demo-box">
+                        <h4>Interactive Demo — Trigger a Webhook</h4>
+                        <p>Click to fire a webhook event and watch it get logged to the event store.</p>
+                        <div class="demo-controls">
+                            <select id="webhookType" class="select-input">
+                                <option value="member.created">member.created</option>
+                                <option value="member.banned">member.banned</option>
+                                <option value="content.reported">content.reported</option>
+                                <option value="purchase.completed">purchase.completed</option>
+                            </select>
+                            <button class="btn btn-primary" id="btnTriggerWebhook">Trigger Webhook</button>
+                        </div>
+                        <div class="event-log" id="eventLog">
+                            <div class="event-log-header">
+                                <span class="log-title">Event Log</span>
+                                <span class="log-count" id="eventCount">0 events</span>
+                            </div>
+                            <div class="event-log-body" id="eventLogBody">
+                                <div class="event-empty">No events yet. Trigger one above.</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-dot red"></span>
+                            <span class="code-dot yellow"></span>
+                            <span class="code-dot green"></span>
+                            <span class="code-filename">src/Domain/WebhookEvent.php</span>
+                        </div>
+                        <pre><code><span class="keyword">class</span> <span class="class-name">WebhookEvent</span>
+{
+    <span class="keyword">public static function</span> <span class="func">create</span>(
+        <span class="type">string</span> <span class="var">$type</span>,
+        <span class="type">array</span>  <span class="var">$payload</span>
+    ): <span class="keyword">self</span> {
+        <span class="keyword">return new</span> <span class="keyword">self</span>(
+            <span class="var">id</span>: <span class="func">bin2hex</span>(<span class="func">random_bytes</span>(<span class="num">8</span>)),
+            <span class="var">type</span>: <span class="var">$type</span>,
+            <span class="var">payload</span>: <span class="var">$payload</span>,
+        );
+    }
+
+    <span class="keyword">public function</span> <span class="func">markProcessed</span>(): <span class="type">void</span>
+    {
+        <span class="var">$this</span>->status      = <span class="string">'processed'</span>;
+        <span class="var">$this</span>->processedAt = <span class="func">date</span>(<span class="string">'Y-m-d H:i:s'</span>);
+    }
+}</code></pre>
+                    </div>
+                </div>
+                <div class="chapter-side">
+                    <div class="skill-badge locked" id="badge-webhook">
+                        <div class="badge-icon">🔒</div>
+                        <div class="badge-info">
+                            <span class="badge-name">Event Architect</span>
+                            <span class="badge-desc">Webhook & event systems</span>
+                        </div>
+                    </div>
+                    <div class="why-card">
+                        <h4>Why This Matters</h4>
+                        <p>Invision Community uses webhooks and event systems to integrate with Discord, Zapier, and custom automations. Reliable event processing is critical for platform extensibility.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Chapter 5: OAuth Gate -->
+        <section class="chapter" id="chapter5" data-chapter="5">
+            <div class="chapter-header">
+                <div class="chapter-number">05</div>
+                <h2 class="chapter-title">The OAuth Gate</h2>
+                <p class="chapter-subtitle">Secure authentication flows that protect your community</p>
+            </div>
+            <div class="chapter-body">
+                <div class="chapter-content">
+                    <div class="story-card">
+                        <h3>The Problem</h3>
+                        <p>Community platforms need secure SSO, API authentication, and third-party app authorization. OAuth 2.0 is the industry standard. Understanding the authorization code flow — and its security implications — is non-negotiable.</p>
+                    </div>
+                    <div class="demo-box">
+                        <h4>Interactive Demo — Simulate OAuth Login Flow</h4>
+                        <p>Click to walk through the full OAuth 2.0 Authorization Code flow step by step.</p>
+                        <div class="demo-controls">
+                            <button class="btn btn-primary" id="btnOAuth">Simulate Login Flow</button>
+                        </div>
+                        <div class="oauth-flow" id="oauthFlow" style="display:none;">
+                        </div>
+                    </div>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-dot red"></span>
+                            <span class="code-dot yellow"></span>
+                            <span class="code-dot green"></span>
+                            <span class="code-filename">OAuth 2.0 Authorization Code Flow</span>
+                        </div>
+                        <pre><code><span class="comment">// Step 1: Redirect to authorization server</span>
+<span class="var">$authUrl</span> = <span class="string">"https://auth.example.com/authorize?"</span> .
+    <span class="func">http_build_query</span>([
+        <span class="string">'response_type'</span> => <span class="string">'code'</span>,
+        <span class="string">'client_id'</span>     => <span class="var">$clientId</span>,
+        <span class="string">'redirect_uri'</span>  => <span class="var">$redirectUri</span>,
+        <span class="string">'scope'</span>         => <span class="string">'member.read member.write'</span>,
+        <span class="string">'state'</span>         => <span class="func">bin2hex</span>(<span class="func">random_bytes</span>(<span class="num">16</span>)),
+    ]);
+
+<span class="comment">// Step 4: Exchange code for token (server-side)</span>
+<span class="var">$response</span> = <span class="func">http</span>(<span class="string">'POST'</span>, <span class="var">$tokenUrl</span>, [
+    <span class="string">'grant_type'</span>    => <span class="string">'authorization_code'</span>,
+    <span class="string">'code'</span>          => <span class="var">$_GET</span>[<span class="string">'code'</span>],
+    <span class="string">'client_id'</span>     => <span class="var">$clientId</span>,
+    <span class="string">'client_secret'</span> => <span class="var">$clientSecret</span>,
+]);</code></pre>
+                    </div>
+                </div>
+                <div class="chapter-side">
+                    <div class="skill-badge locked" id="badge-oauth">
+                        <div class="badge-icon">🔒</div>
+                        <div class="badge-info">
+                            <span class="badge-name">Auth Guardian</span>
+                            <span class="badge-desc">OAuth 2.0 & security</span>
+                        </div>
+                    </div>
+                    <div class="why-card">
+                        <h4>Why This Matters</h4>
+                        <p>Invision Community supports OAuth SSO, API tokens, and third-party app integrations. Secure authentication is the gatekeeper of every community platform.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Chapter 6: MySQL Performance Lab -->
+        <section class="chapter" id="chapter6" data-chapter="6">
+            <div class="chapter-header">
+                <div class="chapter-number">06</div>
+                <h2 class="chapter-title">MySQL Performance Lab</h2>
+                <p class="chapter-subtitle">Where slow queries become fast ones through indexing and analysis</p>
+            </div>
+            <div class="chapter-body">
+                <div class="chapter-content">
+                    <div class="story-card">
+                        <h3>The Problem</h3>
+                        <p>A community platform with millions of members, posts, and interactions lives or dies by query performance. A missing index can turn a 42ms query into a 1.8s table scan. EXPLAIN is your best friend.</p>
+                    </div>
+                    <div class="demo-box">
+                        <h4>Interactive Demo — Query Performance Comparison</h4>
+                        <p>Run the slow query, then add the index and run it again.</p>
+                        <div class="demo-controls">
+                            <button class="btn btn-warn" id="btnSlowQuery">Run Slow Query</button>
+                            <button class="btn btn-success" id="btnAddIndex" disabled>Add Index &amp; Re-run</button>
+                        </div>
+                        <div class="perf-results" id="perfResults" style="display:none;">
+                        </div>
+                    </div>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-dot red"></span>
+                            <span class="code-dot yellow"></span>
+                            <span class="code-dot green"></span>
+                            <span class="code-filename">Performance Analysis</span>
+                        </div>
+                        <pre><code><span class="comment">-- The slow query: full table scan on 248K rows</span>
+<span class="keyword">EXPLAIN</span> <span class="keyword">SELECT</span> m.*, <span class="func">COUNT</span>(p.id) <span class="keyword">AS</span> post_count
+<span class="keyword">FROM</span> members m
+<span class="keyword">LEFT JOIN</span> posts p <span class="keyword">ON</span> p.author_id = m.id
+<span class="keyword">WHERE</span> m.status = <span class="string">'active'</span>
+<span class="keyword">GROUP BY</span> m.id;
+
+<span class="comment">-- The fix: targeted indexes</span>
+<span class="keyword">CREATE INDEX</span> idx_members_status
+    <span class="keyword">ON</span> members(status);
+
+<span class="keyword">CREATE INDEX</span> idx_posts_author_created
+    <span class="keyword">ON</span> posts(author_id, created_at);</code></pre>
+                    </div>
+                </div>
+                <div class="chapter-side">
+                    <div class="skill-badge locked" id="badge-mysql">
+                        <div class="badge-icon">🔒</div>
+                        <div class="badge-info">
+                            <span class="badge-name">Query Optimizer</span>
+                            <span class="badge-desc">MySQL indexing & EXPLAIN</span>
+                        </div>
+                    </div>
+                    <div class="why-card">
+                        <h4>Why This Matters</h4>
+                        <p>Invision Community runs on MySQL with millions of rows. Understanding EXPLAIN, indexing strategies, and query optimization is critical for platform performance at scale.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Chapter 7: Community Platform City -->
+        <section class="chapter" id="chapter7" data-chapter="7">
+            <div class="chapter-header">
+                <div class="chapter-number">07</div>
+                <h2 class="chapter-title">Community Platform City</h2>
+                <p class="chapter-subtitle">Where all the pieces come together into a living, breathing platform</p>
+            </div>
+            <div class="chapter-body">
+                <div class="chapter-content chapter-content--full">
+                    <div class="story-card">
+                        <h3>The Problem</h3>
+                        <p>A real community platform needs member management, moderation tools, search, and status tracking. This is where domain objects, repositories, and APIs converge into a usable product.</p>
+                    </div>
+                    <div class="demo-box demo-box--wide">
+                        <h4>Interactive Demo — Member Search &amp; Moderation</h4>
+                        <p>Search members by name, email, role, or status. Click status badges to see filtering in action.</p>
+                        <div class="demo-controls">
+                            <input type="text" id="memberSearch" placeholder="Search members..." class="search-input">
+                            <div class="filter-pills">
+                                <button class="pill active" data-filter="all">All</button>
+                                <button class="pill" data-filter="active">Active</button>
+                                <button class="pill" data-filter="flagged">Flagged</button>
+                                <button class="pill" data-filter="pending">Pending</button>
+                            </div>
+                        </div>
+                        <div class="members-table-wrap">
+                            <table class="members-table" id="membersTable">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Name</th>
+                                        <th>Email</th>
+                                        <th>Role</th>
+                                        <th>Posts</th>
+                                        <th>Rep</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="membersBody">
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="member-stats" id="memberStats"></div>
+                    </div>
+                </div>
+                <div class="chapter-side">
+                    <div class="skill-badge locked" id="badge-community">
+                        <div class="badge-icon">🔒</div>
+                        <div class="badge-info">
+                            <span class="badge-name">Platform Builder</span>
+                            <span class="badge-desc">Community feature engineering</span>
+                        </div>
+                    </div>
+                    <div class="why-card">
+                        <h4>Why This Matters</h4>
+                        <p>This is the core of what Invision Community does — managing members, moderating content, and providing tools for community managers. Every feature here maps to real platform capabilities.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Chapter 8: Final Boss -->
+        <section class="chapter" id="chapter8" data-chapter="8">
+            <div class="chapter-header">
+                <div class="chapter-number">08</div>
+                <h2 class="chapter-title">Final Boss: Scaling &amp; Maintainability</h2>
+                <p class="chapter-subtitle">Architecture decisions that let a platform grow from 1K to 1M users</p>
+            </div>
+            <div class="chapter-body">
+                <div class="chapter-content chapter-content--full">
+                    <div class="story-card">
+                        <h3>The Problem</h3>
+                        <p>Code that works for 1,000 members will collapse at 1,000,000. Scalable architecture requires separation of concerns, dependency injection, event-driven processing, queue systems, and strategic database indexing.</p>
+                    </div>
+                    <div class="architecture-grid">
+                        <div class="arch-card" data-layer="controller">
+                            <div class="arch-icon">🎯</div>
+                            <h4>Controllers</h4>
+                            <p>HTTP layer. Parse requests, validate input, delegate to services, return responses. No business logic here.</p>
+                            <div class="arch-example">
+                                <code>MemberController::create()</code>
+                            </div>
+                        </div>
+                        <div class="arch-card" data-layer="service">
+                            <div class="arch-icon">⚙️</div>
+                            <h4>Services</h4>
+                            <p>Business logic layer. Orchestrate operations, enforce rules, coordinate between repositories and external systems.</p>
+                            <div class="arch-example">
+                                <code>MemberService::register()</code>
+                            </div>
+                        </div>
+                        <div class="arch-card" data-layer="repository">
+                            <div class="arch-icon">🗄️</div>
+                            <h4>Repositories</h4>
+                            <p>Data access layer. Abstract database queries behind clean interfaces. Swap MySQL for Redis without touching business logic.</p>
+                            <div class="arch-example">
+                                <code>MemberRepository::findByEmail()</code>
+                            </div>
+                        </div>
+                        <div class="arch-card" data-layer="events">
+                            <div class="arch-icon">📡</div>
+                            <h4>Events</h4>
+                            <p>Decouple side effects. When a member joins, fire an event. Let listeners handle email, webhooks, analytics independently.</p>
+                            <div class="arch-example">
+                                <code>MemberRegisteredEvent</code>
+                            </div>
+                        </div>
+                        <div class="arch-card" data-layer="queue">
+                            <div class="arch-icon">📬</div>
+                            <h4>Queues</h4>
+                            <p>Offload heavy work. Sending 10K emails? Queue them. Processing webhooks? Queue them. Keep request cycles fast.</p>
+                            <div class="arch-example">
+                                <code>SendWelcomeEmailJob</code>
+                            </div>
+                        </div>
+                        <div class="arch-card" data-layer="index">
+                            <div class="arch-icon">⚡</div>
+                            <h4>Database Indexes</h4>
+                            <p>Strategic indexes on high-cardinality columns. Composite indexes for common query patterns. Covering indexes to avoid table lookups.</p>
+                            <div class="arch-example">
+                                <code>idx_posts_author_created</code>
+                            </div>
+                        </div>
+                        <div class="arch-card" data-layer="integration">
+                            <div class="arch-icon">🔗</div>
+                            <h4>API Integrations</h4>
+                            <p>Webhooks, OAuth, REST clients. Abstract external services behind interfaces so you can swap providers without rewriting core logic.</p>
+                            <div class="arch-example">
+                                <code>WebhookDispatcher::dispatch()</code>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="final-summary">
+                        <div class="summary-card">
+                            <h3>The Architecture at a Glance</h3>
+                            <div class="arch-diagram">
+                                <div class="arch-layer">
+                                    <span class="layer-label">HTTP</span>
+                                    <span class="layer-items">Controller → Middleware → Router</span>
+                                </div>
+                                <div class="arch-arrow">↓</div>
+                                <div class="arch-layer">
+                                    <span class="layer-label">Business</span>
+                                    <span class="layer-items">Services → Events → Listeners</span>
+                                </div>
+                                <div class="arch-arrow">↓</div>
+                                <div class="arch-layer">
+                                    <span class="layer-label">Data</span>
+                                    <span class="layer-items">Repositories → Models → Database</span>
+                                </div>
+                                <div class="arch-arrow">↓</div>
+                                <div class="arch-layer">
+                                    <span class="layer-label">Async</span>
+                                    <span class="layer-items">Queues → Jobs → Workers</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="chapter-side">
+                    <div class="skill-badge locked" id="badge-scaling">
+                        <div class="badge-icon">🔒</div>
+                        <div class="badge-info">
+                            <span class="badge-name">Scale Master</span>
+                            <span class="badge-desc">Architecture & maintainability</span>
+                        </div>
+                    </div>
+                    <div class="why-card">
+                        <h4>Why This Matters</h4>
+                        <p>Invision Community serves thousands of communities with millions of members. Layered architecture, event-driven design, and queue-based processing are what make that scale possible while keeping the codebase maintainable.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-badge-completion" id="footerCompletion" style="display:none;">
+                <h3>All Skills Unlocked!</h3>
+                <p>You've explored the full journey from legacy PHP to scalable platform architecture.</p>
+            </div>
+            <div class="footer-sign-off">
+                <p class="footer-name">Built by <strong>Daniel Gurczynski</strong></p>
+                <p class="footer-stack">PHP 8+ · Vanilla JS · GSAP · Clean OOP Architecture</p>
+                <p class="footer-note">Run locally: <code>php -S localhost:8000 -t public</code></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/assets/js/app.js"></script>
+</body>
+</html>
